@@ -507,11 +507,12 @@
       </p>
     </div>
 
+    
     <!-- Delivery Toggle -->
-    <div class="delivery-toggle">
-      <button id="pickupBtn" class="active">Pickup</button>
-      <button id="deliveryBtn" class="inactive">Delivery</button>
-    </div>
+<div class="delivery-toggle">
+  <button type="button" id="pickupBtn" class="active">Pickup</button>
+  <button type="button" id="deliveryBtn" class="inactive">Delivery</button>
+</div>
 
     <!-- Form Fields -->
     <div class="form-group">
@@ -558,9 +559,11 @@
             Description here
           </div>
           <div class="special-item-controls">
-            <button class="special-btn" onclick="updateSpecial('treatBox', -1)">−</button>
-            <div class="special-quantity" id="qty-treatBox"></div>
-            <button class="special-btn" onclick="updateSpecial('treatBox', 1)">+</button>
+            <button type="button" class="special-btn" onclick="updateSpecial('treatBox', -1)">−</button>
+            <button type="button" class="special-btn" onclick="updateSpecial('treatBox', 1)">+</button>
+
+            <button type="button" class="special-btn" onclick="updateSpecial('cakeKit', -1)">−</button>
+            <button type="button" class="special-btn" onclick="updateSpecial('cakeKit', 1)">+</button>
           </div>
         </div>
       </div>
@@ -788,14 +791,14 @@
         const item = document.createElement('div');
         item.className = 'flavor-item';
         item.innerHTML = `
-          <div class="flavor-content">
-            <button class="flavor-btn" onclick="updateFlavor('${flavor}', -1)">−</button>
-            <div class="flavor-center">
-              <div class="flavor-name">${flavor}</div>
-              <div class="flavor-quantity" id="qty-${flavor.replace(/\s/g, '')}">${flavors[flavor] > 0 ? flavors[flavor] : ''}</div>
-            </div>
-            <button class="flavor-btn" onclick="updateFlavor('${flavor}', 1)">+</button>
-          </div>
+  <div class="flavor-content">
+    <button type="button" class="flavor-btn" onclick="updateFlavor('${flavor}', -1)">−</button>
+    <div class="flavor-center">
+      <div class="flavor-name">${flavor}</div>
+      <div class="flavor-quantity" id="qty-${flavor.replace(/\s/g, '')}">${flavors[flavor] > 0 ? flavors[flavor] : ''}</div>
+    </div>
+    <button type="button" class="flavor-btn" onclick="updateFlavor('${flavor}', 1)">+</button>
+  </div>
         `;
         flavorsList.appendChild(item);
       });
