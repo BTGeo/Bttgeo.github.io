@@ -545,48 +545,47 @@
     </div>
 
     <!-- Valentine's Specials -->
-    <div class="valentines-special">
-      <h3> Valentine's Day Specials </h3>
-      
-      <!-- Valentine's Treat Box -->
-      <div class="special-item">
-        <div class="special-item-header">
-          <span>Valentine's Treat Box</span>
-          <span class="special-item-price">$</span>
-        </div>
-        <div class="special-item-content">
-          <div class="special-item-description">
-            Description here
-          </div>
-          <div class="special-item-controls">
-            <button type="button" class="special-btn" onclick="updateSpecial('treatBox', -1)">−</button>
-            <button type="button" class="special-btn" onclick="updateSpecial('treatBox', 1)">+</button>
-
-            <button type="button" class="special-btn" onclick="updateSpecial('cakeKit', -1)">−</button>
-            <button type="button" class="special-btn" onclick="updateSpecial('cakeKit', 1)">+</button>
-          </div>
-        </div>
+    <!-- Valentine's Specials -->
+<div class="valentines-special">
+  <h3>💕 Valentine's Day Specials 💕</h3>
+  
+  <!-- Valentine's Treat Box -->
+  <div class="special-item">
+    <div class="special-item-header">
+      <span>Valentine's Treat Box</span>
+      <span class="special-item-price">$</span>
+    </div>
+    <div class="special-item-content">
+      <div class="special-item-description">
+        Description here
       </div>
-
-      <!-- Cake Decorating Kit -->
-      <div class="special-item">
-        <div class="special-item-header">
-          <span>DIY Cake Decorating Kit</span>
-          <span class="special-item-price">$</span>
-        </div>
-        <div class="special-item-content">
-          <div class="special-item-description">
-           Description here
-          </div>
-          <div class="special-item-controls">
-            <button class="special-btn" onclick="updateSpecial('cakeKit', -1)">−</button>
-            <div class="special-quantity" id="qty-cakeKit"></div>
-            <button class="special-btn" onclick="updateSpecial('cakeKit', 1)">+</button>
-          </div>
-        </div>
+      <div class="special-item-controls">
+        <button type="button" class="special-btn" onclick="updateSpecial('treatBox', -1); event.preventDefault();">−</button>
+        <div class="special-quantity" id="qty-treatBox">0</div>
+        <button type="button" class="special-btn" onclick="updateSpecial('treatBox', 1); event.preventDefault();">+</button>
       </div>
     </div>
+  </div>
 
+  <!-- Cake Decorating Kit -->
+  <div class="special-item">
+    <div class="special-item-header">
+      <span>DIY Cake Decorating Kit</span>
+      <span class="special-item-price">$</span>
+    </div>
+    <div class="special-item-content">
+      <div class="special-item-description">
+        Description here
+      </div>
+      <div class="special-item-controls">
+        <button type="button" class="special-btn" onclick="updateSpecial('cakeKit', -1); event.preventDefault();">−</button>
+        <div class="special-quantity" id="qty-cakeKit">0</div>
+        <button type="button" class="special-btn" onclick="updateSpecial('cakeKit', 1); event.preventDefault();">+</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
     <!-- Flavors Title -->
     <h2 class="section-title">Select your Flavours</h2>
 
@@ -772,15 +771,17 @@
       updateSummary();
     }
 
+    
     // Update special items quantity
-    function updateSpecial(special, change) {
-      specials[special] = Math.max(0, specials[special] + change);
-      
-      const qtyElement = document.getElementById('qty-' + special);
-      qtyElement.textContent = specials[special] > 0 ? specials[special] : '';
-      
-      updateSummary();
-    }
+function updateSpecial(special, change) {
+  specials[special] = Math.max(0, specials[special] + change);
+  
+  const qtyElement = document.getElementById('qty-' + special);
+  qtyElement.textContent = specials[special];
+  
+  updateSummary();
+  return false; // Prevent form submission
+}
 
     // Render flavor items
     function renderFlavors() {
